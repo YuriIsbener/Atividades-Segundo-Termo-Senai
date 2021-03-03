@@ -37,7 +37,7 @@ INNER JOIN Habilidade
 ON ClasseHabilidade.IdHabilidade = Habilidade.IdHabilidade
 
 SELECT NomeClasse, NomeHabilidade FROM Classe
-RIGHT JOIN ClasseHabilidade
+LEFT JOIN ClasseHabilidade
 ON Classe.IdClasse = ClasseHabilidade.IdClasse
-RIGHT JOIN Habilidade
+LEFT JOIN Habilidade
 ON ClasseHabilidade.IdHabilidade = Habilidade.IdHabilidade
