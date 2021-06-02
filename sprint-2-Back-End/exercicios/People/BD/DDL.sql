@@ -1,0 +1,9 @@
+CREATE DATABASE M_Peoples;
+
+GO
+
+CREATE TABLE funcionario
+(
+	idFuncionario INT PRIMARY KEY NOT NULL,
+	nome VARCHAR(200) UNIQUE NOT NULL
+);
