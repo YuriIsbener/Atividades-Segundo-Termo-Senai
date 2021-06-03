@@ -1,41 +1,28 @@
-USE inlock_games_manha_teste;
+USE inlock_games_manha;
 
-GO
+SELECT * FROM usuarios;
+SELECT * FROM estudios;
+SELECT * FROM jogos;
 
-SELECT * FROM usuario;
+SELECT nomeJogo, descricao, dataLancamento, valor, nomeEstudio FROM jogos
+INNER JOIN estudios
+ON jogos.idEstudio = estudios.idEstudio
 
-GO
+SELECT nomeEstudio, nomeJogo FROM estudios
+FULL OUTER JOIN jogos
+ON estudios.idEstudio = jogos.idEstudio
 
-SELECT * FROM estudio;
+SELECT email, titulo 
+FROM usuarios U
+LEFT JOIN tiposDeUsuario TU
+ON U.idTipoUsuario = TU.idTipoUsuario
+WHERE email = 'admin@admin.com' AND senha = 'admin'
 
-GO
+SELECT nomeJogo, descricao, dataLancamento, valor, nomeEstudio FROM jogos
+INNER JOIN estudios
+ON jogos.idEstudio = estudios.idEstudio
+WHERE idJogo = 2
 
-SELECT * FROM jogo;
-
-GO
-
-SELECT idJogo, nomeJogo, descricaoJogo, dataLancamento, valorJogo, nomeEstudio FROM jogo
-INNER JOIN estudio
-ON jogo.idEstudio = estudio.idEstudio;
-
-GO
-
-SELECT nomeEstudio, nomeJogo FROM estudio
-LEFT JOIN jogo
-ON estudio.idEstudio = jogo.idEstudio;
-
-GO
-
-SELECT emailUser, senhaUser FROM usuario
-WHERE emailUser ='admin@admin.com' AND senhaUser ='admin';
-
-GO
-
-SELECT * FROM jogo
-WHERE idJogo = 1;
-
-GO
-
-SELECT * FROM estudio
-WHERE idEstudio = 1;
+SELECT nomeEstudio FROM estudios
+WHERE idEstudio = 3
 
