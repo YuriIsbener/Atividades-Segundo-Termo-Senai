@@ -12,11 +12,13 @@ class Clock extends React.Component{
     this.state ={
       date : new Date()
     };
+    this.pararRelogio = this.pararRelogio.bind(this);
+    this.retomarRelogio = this.retomarRelogio.bind(this);
   }
 
   componentDidMount(){
     this.timerID = setInterval( () => {
-      this.thick()  
+      this.thick() 
     }, 1000);
 
     console.log("Eu sou o relógio "+ this.timerID)
@@ -24,6 +26,18 @@ class Clock extends React.Component{
 
   componentWillUnmount(){
     clearInterval(this.timerID)
+  }
+
+  pararRelogio(){
+    clearInterval(this.timerID)
+    console.log("Relógio "+ this.timerID +" Pausado")
+  }
+  retomarRelogio(){
+    this.timerID = setInterval( () => {
+      this.thick() 
+    }, 1000);
+    console.log("Relógio Retomado")
+    console.log("Agora sou o relógio "+ this.timerID)
   }
 
   thick(){
@@ -36,8 +50,11 @@ class Clock extends React.Component{
       <div>
         <h1>Relógio</h1>
         <DataFormatada date={this.state.date} />
-        <button onClick={clearInterval(this.timerID)}>
-          Parar
+        <button onClick={this.pararRelogio}>
+        Parar
+        </button>
+        <button onClick={this.retomarRelogio}>
+        Retomar
         </button>
       </div>
     );
